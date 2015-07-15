@@ -75,7 +75,7 @@
     		})
     		if(count == 3){
     			generateDom();
-    			console.log('asas');    		}
+    			alert("won ! ")		}
     	})
     }
 
