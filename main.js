@@ -26,22 +26,26 @@
 	                    	this.innerHTML = 'X';
 	                    	exec = false;
 	                    }
-	                	//var call = 0;
+	                	var verticalArr = [];
 	                	var arr = Array.prototype.slice.call(document.querySelectorAll('#parent .row'));
 				    	Array.prototype.forEach.call(arr,function(dataArr){
-				    		var call = 0;
+				    		var horzCall = 0;
+				    		//var vertCall = 0;
+				    		var obj = [];
 				    		var innerEl = dataArr.querySelectorAll('.inner-container');
 				    		Array.prototype.forEach.call(innerEl,function(checkData){
 				    			if(checkData.innerHTML){        				
-				        			call++;
+				        			horzCall++;
 				    			}
-
-				    			//count++;
+				    			obj.push(checkData.innerHTML)
+				    			//vertCall++;
 				    		})
-				    		if(call == 3){
+				    		verticalArr.push(obj);
+				    		if(horzCall == 3){
 				    			checkResult();
 				    		}
 				    	})
+				    	checkVertical(verticalArr);
 	                }
 	            
 	            })(j))
@@ -75,8 +79,24 @@
     		})
     		if(count == 3){
     			generateDom();
-    			alert("won ! ")		}
+    			alert("won ! ")		
+    		}
     	})
+    }
+
+    function checkVertical(vArr){
+    	if( (vArr[0][0] == vArr[1][0]) && (vArr[2][0]) && vArr[0][0] && vArr[1][0] && vArr[2][0]){
+    		generateDom();
+    		alert("won ! ")	
+    	}
+    	else if( (vArr[0][1] == vArr[1][1]) && (vArr[2][1]== vArr[1][1]) && vArr[0][1] && vArr[1][1] && vArr[2][1]){
+    		generateDom();
+    		alert("won ! ")	
+    	}
+    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][2] == vArr[1][2]) && vArr[0][2] && vArr[1][2] &&  vArr[2][2] ){
+    		generateDom();
+    		alert("won ! ")	
+    	}
     }
 
 
