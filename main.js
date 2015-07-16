@@ -7,12 +7,10 @@
 	        var parElem = document.createElement("div");
 	        var childElem = document.createElement("div");
 	        parElem.className = "row clearfix";
-	        //childElem.className = "col clearfix";
 	        for (var j = 0; j < 3; j++) {
 	            var inst = 0;
 	            var newElem = document.createElement("div");
 	            newElem.className = "inner-container";
-	            //newElem.innerHTML = 'clik';
 	            parElem.appendChild(newElem);
 	            newElem.addEventListener('click',(function(instCopy){
 	            	var exec = false;
@@ -30,7 +28,6 @@
 	                	var arr = Array.prototype.slice.call(document.querySelectorAll('#parent .row'));
 				    	Array.prototype.forEach.call(arr,function(dataArr){
 				    		var horzCall = 0;
-				    		//var vertCall = 0;
 				    		var obj = [];
 				    		var innerEl = dataArr.querySelectorAll('.inner-container');
 				    		Array.prototype.forEach.call(innerEl,function(checkData){
@@ -38,7 +35,6 @@
 				        			horzCall++;
 				    			}
 				    			obj.push(checkData.innerHTML)
-				    			//vertCall++;
 				    		})
 				    		verticalArr.push(obj);
 				    		if(horzCall == 3){
@@ -75,7 +71,6 @@
         			}
         			prevVal = checkData.innerHTML;
     			}
-    			//count++;
     		})
     		if(count == 3){
     			generateDom();
@@ -85,20 +80,33 @@
     }
 
     function checkVertical(vArr){
-    	if( (vArr[0][0] == vArr[1][0]) && (vArr[2][0]) && vArr[0][0] && vArr[1][0] && vArr[2][0]){
+    	if( (vArr[0][0] == vArr[1][0]) && (vArr[2][0] == vArr[1][0]) && checkNull( vArr[0][0] , vArr[1][0] , vArr[2][0] ) ){
     		generateDom();
     		alert("won ! ")	
     	}
-    	else if( (vArr[0][1] == vArr[1][1]) && (vArr[2][1]== vArr[1][1]) && vArr[0][1] && vArr[1][1] && vArr[2][1]){
+    	else if( (vArr[0][1] == vArr[1][1]) && (vArr[2][1]== vArr[1][1]) && checkNull( vArr[0][1] , vArr[1][1] , vArr[2][1] ) ){
     		generateDom();
     		alert("won ! ")	
     	}
-    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][2] == vArr[1][2]) && vArr[0][2] && vArr[1][2] &&  vArr[2][2] ){
+    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][2] == vArr[1][2]) && checkNull( vArr[0][2] , vArr[1][2] ,  vArr[2][2] ) ){
+    		generateDom();
+    		alert("won ! ")	
+    	}
+    	else if( (vArr[0][0] == vArr[1][1]) && (vArr[1][1] == vArr[2][2]) && checkNull( vArr[0][0] , vArr[1][1] ,  vArr[2][2] ) ){
+    		generateDom();
+    		alert("won ! ")	
+    	}
+    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][0] == vArr[1][2]) && checkNull( vArr[0][2] , vArr[1][2] ,  vArr[2][0] ) ){
     		generateDom();
     		alert("won ! ")	
     	}
     }
 
-
+    function checkNull(a,b,c){
+    	if(a&&b&&c)
+    		return true;
+    	else
+    		return false;
+    }
     generateDom();
 })();
