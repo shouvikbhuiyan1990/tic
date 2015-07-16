@@ -28,24 +28,26 @@
 		                    	this.innerHTML = 'X';
 		                    	exec = false;
 		                    }
-		                	var verticalArr = [];
-		                	var arr = Array.prototype.slice.call(document.querySelectorAll('#parent .row'));
-					    	Array.prototype.forEach.call(arr,function(dataArr){
-					    		var horzCall = 0;
-					    		var obj = [];
-					    		var innerEl = dataArr.querySelectorAll('.inner-container');
-					    		Array.prototype.forEach.call(innerEl,function(checkData){
-					    			if(checkData.innerHTML){        				
-					        			horzCall++;
-					    			}
-					    			obj.push(checkData.innerHTML)
-					    		})
-					    		verticalArr.push(obj);
-					    		if(horzCall == 3){
-					    			me.checkResult();
-					    		}
-					    	})
-					    	me.checkVertical(verticalArr);
+		                    setTimeout(function(){		                    	
+			                	var verticalArr = [];
+			                	var arr = Array.prototype.slice.call(document.querySelectorAll('#parent .row'));
+						    	Array.prototype.forEach.call(arr,function(dataArr){
+						    		var horzCall = 0;
+						    		var obj = [];
+						    		var innerEl = dataArr.querySelectorAll('.inner-container');
+						    		Array.prototype.forEach.call(innerEl,function(checkData){
+						    			if(checkData.innerHTML){        				
+						        			horzCall++;
+						    			}
+						    			obj.push(checkData.innerHTML)
+						    		})
+						    		verticalArr.push(obj);
+						    		if(horzCall == 3){
+						    			me.checkResult();
+						    		}
+						    	})
+						    	me.checkVertical(verticalArr);
+		                    },3000)
 		                }
 		            
 		            })(j))
