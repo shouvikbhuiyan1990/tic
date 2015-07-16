@@ -80,25 +80,40 @@
     }
 
     function checkVertical(vArr){
-    	if( (vArr[0][0] == vArr[1][0]) && (vArr[2][0] == vArr[1][0]) && checkNull( vArr[0][0] , vArr[1][0] , vArr[2][0] ) ){
-    		generateDom();
-    		alert("won ! ")	
+    	var gameFinished = true;
+    	vArr.forEach(function(data){
+    		data.forEach(function(inData){
+    			if(!inData){
+    				gameFinished = false;
+    			}
+    				
+    		});
+    	});
+    	if(!gameFinished){    		
+	    	if( (vArr[0][0] == vArr[1][0]) && (vArr[2][0] == vArr[1][0]) && checkNull( vArr[0][0] , vArr[1][0] , vArr[2][0] ) ){
+	    		generateDom();
+	    		alert("won ! ")	
+	    	}
+	    	else if( (vArr[0][1] == vArr[1][1]) && (vArr[2][1]== vArr[1][1]) && checkNull( vArr[0][1] , vArr[1][1] , vArr[2][1] ) ){
+	    		generateDom();
+	    		alert("won ! ")	
+	    	}
+	    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][2] == vArr[1][2]) && checkNull( vArr[0][2] , vArr[1][2] ,  vArr[2][2] ) ){
+	    		generateDom();
+	    		alert("won ! ")	
+	    	}
+	    	else if( (vArr[0][0] == vArr[1][1]) && (vArr[1][1] == vArr[2][2]) && checkNull( vArr[0][0] , vArr[1][1] ,  vArr[2][2] ) ){
+	    		generateDom();
+	    		alert("won ! ")	
+	    	}
+	    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][0] == vArr[1][2]) && checkNull( vArr[0][2] , vArr[1][2] ,  vArr[2][0] ) ){
+	    		generateDom();
+	    		alert("won ! ")	
+	    	}
     	}
-    	else if( (vArr[0][1] == vArr[1][1]) && (vArr[2][1]== vArr[1][1]) && checkNull( vArr[0][1] , vArr[1][1] , vArr[2][1] ) ){
+    	else{
     		generateDom();
-    		alert("won ! ")	
-    	}
-    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][2] == vArr[1][2]) && checkNull( vArr[0][2] , vArr[1][2] ,  vArr[2][2] ) ){
-    		generateDom();
-    		alert("won ! ")	
-    	}
-    	else if( (vArr[0][0] == vArr[1][1]) && (vArr[1][1] == vArr[2][2]) && checkNull( vArr[0][0] , vArr[1][1] ,  vArr[2][2] ) ){
-    		generateDom();
-    		alert("won ! ")	
-    	}
-    	else if( (vArr[0][2] == vArr[1][2]) && (vArr[2][0] == vArr[1][2]) && checkNull( vArr[0][2] , vArr[1][2] ,  vArr[2][0] ) ){
-    		generateDom();
-    		alert("won ! ")	
+	    	alert("Regenerating Game ! ")	
     	}
     }
 
